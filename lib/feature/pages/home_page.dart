@@ -7,7 +7,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var header = Column(children: [
+    var header =
+        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       const Text(
         "Welcome back!",
         style: TextStyle(
@@ -29,9 +30,9 @@ class HomePage extends StatelessWidget {
               borderSide: BorderSide(width: 0.0, style: BorderStyle.none),
               borderRadius: BorderRadius.all(Radius.circular(8.0))),
           filled: true,
-          fillColor: lightGrey,
+          fillColor: darkGrey,
           prefixIcon: Icon(Icons.search),
-          prefixIconColor: darkGrey,
+          prefixIconColor: lightGrey,
           focusColor: darkGrey,
           hintText: "Search for song, artirts, playlist ..."),
     );
