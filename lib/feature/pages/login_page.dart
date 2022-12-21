@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/constants/image.dart';
+import 'package:music_app/feature/pages/home_page.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({
@@ -59,7 +60,10 @@ class LoginPage extends StatelessWidget {
                       "Continue",
                       style: TextStyle(color: Colors.white, fontSize: 16),
                     ),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (_) => HomePage()));
+                    },
                   ),
                 ),
               ],
