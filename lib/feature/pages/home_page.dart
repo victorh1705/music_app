@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/constants/colors.dart';
 import 'package:music_app/feature/pages/widgets/music_chips.dart';
+import 'package:music_app/feature/pages/widgets/playlist_banner.dart';
+import 'package:music_app/models/playlist.dart';
 
 class HomePage extends StatelessWidget {
+  List<Playlist> get playlist => Playlist.data();
+
   const HomePage({super.key});
 
   @override
@@ -51,13 +55,14 @@ class HomePage extends StatelessWidget {
                 height: 24,
               ),
               searchField,
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
-              MusicChips(),
-              SizedBox(
+              const MusicChips(),
+              const SizedBox(
                 height: 24,
               ),
+              PlaylistBanner(playlists: playlist)
             ]),
           ),
         ),
