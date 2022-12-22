@@ -49,33 +49,27 @@ class HomePage extends StatelessWidget {
       backgroundColor: const Color(0xff0f0817),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
-            child: Padding(
-              padding: const EdgeInsets.only(top: 64),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    header,
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    searchField,
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    const MusicChips(),
-                    const SizedBox(
-                      height: 24,
-                    ),
-                    PlaylistBanner(playlists: playlist),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    MusicList(musics: musics)
-                  ]),
+          padding: const EdgeInsets.only(top: 64, left: 24, right: 24),
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            header,
+            const SizedBox(
+              height: 24,
             ),
-          ),
+            searchField,
+            const SizedBox(
+              height: 40,
+            ),
+            const MusicChips(),
+            const SizedBox(
+              height: 24,
+            ),
+            PlaylistBanner(playlists: playlist),
+            const SizedBox(
+              height: 40,
+            ),
+            MusicList(musics: musics)
+          ]),
         ),
       ),
     );
