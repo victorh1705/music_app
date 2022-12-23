@@ -28,41 +28,53 @@ class LoginPage extends StatelessWidget {
                 const Text(
                   "Fell the beat",
                   style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24),
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
+                  ),
                 ),
                 const SizedBox(
                   height: 16,
                 ),
-                const Text("Emmerse yourself into the world of music today",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16,
-                    )),
+                const Text(
+                  "Emmerse yourself into the world of music today",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16,
+                  ),
+                ),
                 const SizedBox(
                   height: 40,
                 ),
                 Container(
                   width: double.infinity,
                   decoration: const ShapeDecoration(
-                      shape: StadiumBorder(),
-                      gradient: LinearGradient(colors: [
+                    shape: StadiumBorder(),
+                    gradient: LinearGradient(
+                      colors: [
                         Color(0xff9D1DCA),
                         Color(0xff842ED8),
                         Color(0xffDB28A9),
                         Color(0xff9D1DCA),
-                      ])),
+                      ],
+                    ),
+                  ),
                   child: MaterialButton(
                     child: const Text(
                       "Continue",
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
                     ),
                     onPressed: () {
                       Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(builder: (_) => HomePage()));
+                        MaterialPageRoute(
+                          builder: (_) => const HomePage(),
+                        ),
+                      );
                     },
                   ),
                 ),
