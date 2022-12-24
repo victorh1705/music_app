@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:music_app/feature/pages/home_page.dart';
+import 'package:music_app/feature/pages/playlist_page.dart';
+import 'package:music_app/models/playlist.dart';
 
 import 'feature/pages/login_page.dart';
 
@@ -30,6 +33,14 @@ class MyApp extends StatelessWidget {
             brightness: Brightness.dark,
             appBarTheme: const AppBarTheme(
                 systemOverlayStyle: SystemUiOverlayStyle.light)),
-        home: LoginPage());
+      routes: {
+        LoginPage.route: (context) => const LoginPage(),
+        HomePage.route: (context) => const HomePage(),
+        PlaylistPage.route: (context) {
+          var argument = ModalRoute.of(context)!.settings.arguments as Playlist;
+          return PlaylistPage(playlist: argument);
+        }
+      },
+    );
   }
 }

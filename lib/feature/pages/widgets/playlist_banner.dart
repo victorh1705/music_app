@@ -56,10 +56,9 @@ class PlaylistBanner extends StatelessWidget {
                   ],
                 ),
                 onPressed: () {
-                  navigator.push(
-                    MaterialPageRoute(
-                      builder: ((context) => PlaylistPage(playlist: playlist)),
-                    ),
+                  navigator.pushNamed(
+                    PlaylistPage.route,
+                    arguments: playlist,
                   );
                 },
               ),

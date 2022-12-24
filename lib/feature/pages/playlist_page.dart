@@ -4,6 +4,8 @@ import 'package:music_app/feature/pages/widgets/music_list.dart';
 import 'package:music_app/models/playlist.dart';
 
 class PlaylistPage extends StatelessWidget {
+  static var route = "PlailstView";
+
   final Playlist playlist;
 
   const PlaylistPage({super.key, required this.playlist});
@@ -12,7 +14,6 @@ class PlaylistPage extends StatelessWidget {
     return Container(
       height: 340,
       decoration: BoxDecoration(
-        // color: Colors.black,
         image: DecorationImage(
           opacity: 0.3,
           image: NetworkImage(playlist.banner),
@@ -91,23 +92,31 @@ class PlaylistPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var navigator = Navigator.of(context);
+
     return Scaffold(
       backgroundColor: darkPurple,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: const Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: 24.0,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.chevron_left,
+          ),
+          padding: const EdgeInsets.all(24),
+          enableFeedback: false,
+          onPressed: () {
+            navigator.pop();
+          },
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(
+              Icons.more_horiz,
             ),
-            child: Icon(
-              Icons.chevron_left,
-            )),
-        actions: const [
-          Padding(
-            padding: EdgeInsets.all(24.0),
-            child: Icon(Icons.more_horiz),
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            onPressed: () {},
           ),
         ],
       ),

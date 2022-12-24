@@ -3,12 +3,16 @@ import 'package:music_app/constants/image.dart';
 import 'package:music_app/feature/pages/home_page.dart';
 
 class LoginPage extends StatelessWidget {
+  static const route = "/";
+
   const LoginPage({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    var navigator = Navigator.of(context);
+
     return Scaffold(
       body: Container(
         alignment: Alignment.center,
@@ -70,10 +74,8 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(
-                          builder: (_) => const HomePage(),
-                        ),
+                      navigator.pushReplacementNamed(
+                        HomePage.route,
                       );
                     },
                   ),
