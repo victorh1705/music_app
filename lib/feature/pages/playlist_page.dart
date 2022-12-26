@@ -4,7 +4,7 @@ import 'package:music_app/feature/pages/widgets/music_list.dart';
 import 'package:music_app/models/playlist.dart';
 
 class PlaylistPage extends StatelessWidget {
-  static var route = "PlailstView";
+  static get route => "/playlist";
 
   final Playlist playlist;
 

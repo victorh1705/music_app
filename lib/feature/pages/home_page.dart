@@ -7,7 +7,7 @@ import 'package:music_app/models/music.dart';
 import 'package:music_app/models/playlist.dart';
 
 class HomePage extends StatelessWidget {
-  static const route = "HomeView";
+  static get route => "/homeView";
 
   List<Playlist> get playlists => Playlist.data();
   List<Music> get musics => Music.data();

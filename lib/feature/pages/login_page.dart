@@ -3,7 +3,7 @@ import 'package:music_app/constants/image.dart';
 import 'package:music_app/feature/pages/home_page.dart';
 
 class LoginPage extends StatelessWidget {
-  static const route = "/";
+  static get route => "/";
 
   const LoginPage({
     Key? key,

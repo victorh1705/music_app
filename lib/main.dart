@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:music_app/feature/pages/home_page.dart';
-import 'package:music_app/feature/pages/music_view.dart';
+import 'package:music_app/feature/pages/music_page.dart';
 import 'package:music_app/feature/pages/playlist_page.dart';
 import 'package:music_app/models/music.dart';
 import 'package:music_app/models/playlist.dart';
@@ -42,9 +42,9 @@ class MyApp extends StatelessWidget {
           var playlist = ModalRoute.of(context)!.settings.arguments as Playlist;
           return PlaylistPage(playlist: playlist);
         },
-        MusicView.route: (context) {
+        MusicPage.route: (context) {
           var music = ModalRoute.of(context)!.settings.arguments as Music;
-          return MusicView(music: music);
+          return MusicPage(music: music);
         }
       },
     );

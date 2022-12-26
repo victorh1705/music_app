@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:music_app/constants/colors.dart';
-import 'package:music_app/feature/pages/music_view.dart';
+import 'package:music_app/feature/pages/music_page.dart';
 import 'package:music_app/models/music.dart';
 
 class MusicList extends StatelessWidget {
@@ -73,7 +73,7 @@ class MusicList extends StatelessWidget {
                 ),
                 onPressed: () {
                   navigator.pushNamed(
-                    MusicView.route,
+                    MusicPage.route,
                     arguments: music,
                   );
                 },
