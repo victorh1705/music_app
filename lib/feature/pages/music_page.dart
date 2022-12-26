@@ -180,35 +180,82 @@ class MusicPage extends StatelessWidget {
     return Scaffold(
       appBar: _buildAppBar(navigator),
       backgroundColor: darkPurple,
-      body: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.network(
-                music.banner,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                height: 300,
+      body: CustomPaint(
+        painter: BackgroundPainter(),
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Image.network(
+                  music.banner,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                  height: 300,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 40,
-            ),
-            _buildNamedAndDescription(),
-            const SizedBox(
-              height: 40,
-            ),
-            _buildProgressBar(),
-            const SizedBox(
-              height: 60,
-            ),
-            _buildPlayer()
-          ],
+              const SizedBox(
+                height: 40,
+              ),
+              _buildNamedAndDescription(),
+              const SizedBox(
+                height: 40,
+              ),
+              _buildProgressBar(),
+              const SizedBox(
+                height: 60,
+              ),
+              _buildPlayer()
+            ],
+          ),
         ),
       ),
     );
+  }
+}
+
+class BackgroundPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final height = size.height;
+    final width = size.width;
+    Paint paint = Paint();
+
+    Path mainBackground = Path();
+    mainBackground.addRect(Rect.fromLTRB(0, 0, width, height));
+    paint.color = darkPurple;
+    canvas.drawPath(mainBackground, paint);
+
+    canvas.drawOval(
+      Rect.fromLTWH(width - 200, -200, 400, 400),
+      Paint()
+        ..color = purple2.withOpacity(0.4)
+        ..maskFilter = const MaskFilter.blur(
+          BlurStyle.normal,
+          50,
+        ),
+    );
+
+    canvas.drawOval(
+      Rect.fromLTWH(
+        -150,
+        height - 150,
+        400,
+        400,
+      ),
+      Paint()
+        ..color = purple2.withOpacity(0.4)
+        ..maskFilter = const MaskFilter.blur(
+          BlurStyle.normal,
+          50,
+        ),
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return oldDelegate != this;
   }
 }

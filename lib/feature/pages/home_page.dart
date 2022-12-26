@@ -66,48 +66,79 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff0f0817),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.only(
-            top: 64,
-            left: 24,
-            right: 24,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildHeader(),
-              const SizedBox(
-                height: 24,
-              ),
-              _buildSearchField(),
-              const SizedBox(
-                height: 40,
-              ),
-              const MusicChips(),
-              const SizedBox(
-                height: 24,
-              ),
-              PlaylistBanner(playlists: playlists),
-              const SizedBox(
-                height: 40,
-              ),
-              const Text(
-                "Your Favorite",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
+      body: CustomPaint(
+        painter: BackgroundPainter(),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.only(
+              top: 64,
+              left: 24,
+              right: 24,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildHeader(),
+                const SizedBox(
+                  height: 24,
                 ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              MusicList(musics: musics),
-            ],
+                _buildSearchField(),
+                const SizedBox(
+                  height: 40,
+                ),
+                const MusicChips(),
+                const SizedBox(
+                  height: 24,
+                ),
+                PlaylistBanner(playlists: playlists),
+                const SizedBox(
+                  height: 40,
+                ),
+                const Text(
+                  "Your Favorites",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18,
+                  ),
+                ),
+                const SizedBox(
+                  height: 24,
+                ),
+                MusicList(musics: musics),
+              ],
+            ),
           ),
         ),
       ),
     );
+  }
+}
+
+class BackgroundPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final height = size.height;
+    final width = size.width;
+    Paint paint = Paint();
+
+    Path mainBackground = Path();
+    mainBackground.addRect(Rect.fromLTRB(0, 0, width, height));
+    paint.color = darkPurple;
+    canvas.drawPath(mainBackground, paint);
+
+    canvas.drawOval(
+      const Rect.fromLTWH(-170, 275, 500, 500),
+      Paint()
+        ..color = purple2.withOpacity(0.4)
+        ..maskFilter = const MaskFilter.blur(
+          BlurStyle.normal,
+          50,
+        ),
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return oldDelegate != this;
   }
 }
