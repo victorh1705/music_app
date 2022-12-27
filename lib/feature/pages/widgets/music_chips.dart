@@ -23,23 +23,38 @@ class MusicChips extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       child: Wrap(
         spacing: 32,
-        children: list
-            .asMap()
-            .entries
-            .map((entry) => Text(
-                  entry.value,
-                  style: TextStyle(
-                    fontSize: 16,
-                    color: entry.key == selectedItemIndex
-                        ? Colors.white
-                        : lightGrey,
-                    decoration: entry.key == selectedItemIndex
-                        ? TextDecoration.underline
-                        : TextDecoration.none,
-                    decorationThickness: 3,
+        children: list.asMap().entries.map((entry) {
+          var isSelectedItem = (entry.key == selectedItemIndex);
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                entry.value,
+                style: TextStyle(
+                  fontSize: 16,
+                  color:
+                      entry.key == selectedItemIndex ? Colors.white : lightGrey,
+                ),
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Flex(
+                direction: Axis.horizontal,
+                children: [
+                  Container(
+                    height: isSelectedItem ? 3 : 2,
+                    width: 50,
+                    decoration: const BoxDecoration(
+                      gradient: purpleGradient,
+                    ),
                   ),
-                ))
-            .toList(),
+                ],
+              ),
+            ],
+          );
+        }).toList(),
       ),
     );
   }

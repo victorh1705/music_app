@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
         Text(
           "What do you like today?",
           style: TextStyle(
-            color: Colors.white,
+            color: lightGrey,
             fontWeight: FontWeight.w600,
             fontSize: 14,
           ),
@@ -86,7 +86,7 @@ class HomePage extends StatelessWidget {
                 const SizedBox(
                   height: 40,
                 ),
-                const MusicChips(),
+                MusicChips(),
                 const SizedBox(
                   height: 24,
                 ),
