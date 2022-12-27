@@ -19,42 +19,51 @@ class MusicChips extends StatelessWidget {
       "Festival",
     ];
 
+    Widget buildChip(String music, bool isSelectedItem) {
+      return TextButton(
+        onPressed: () {},
+        child: Column(
+          children: [
+            Text(
+              music,
+              style: TextStyle(
+                fontSize: 16,
+                color: isSelectedItem ? Colors.white : lightGrey,
+              ),
+            ),
+            const SizedBox(
+              height: 4,
+            ),
+            Container(
+              height: isSelectedItem ? 3 : 0,
+              decoration: const BoxDecoration(
+                gradient: purpleGradient,
+              ),
+              child: Row(
+                children: [
+                  Text(
+                    music,
+                    style: const TextStyle(color: Colors.transparent),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      );
+    }
+
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Wrap(
         spacing: 32,
-        children: list.asMap().entries.map((entry) {
-          var isSelectedItem = (entry.key == selectedItemIndex);
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                entry.value,
-                style: TextStyle(
-                  fontSize: 16,
-                  color:
-                      entry.key == selectedItemIndex ? Colors.white : lightGrey,
-                ),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Flex(
-                direction: Axis.horizontal,
-                children: [
-                  Container(
-                    height: isSelectedItem ? 3 : 2,
-                    width: 50,
-                    decoration: const BoxDecoration(
-                      gradient: purpleGradient,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          );
-        }).toList(),
+        children: list.asMap().entries.map(
+          (entry) {
+            var isSelectedItem = (entry.key == selectedItemIndex);
+
+            return buildChip(entry.value, isSelectedItem);
+          },
+        ).toList(),
       ),
     );
   }
