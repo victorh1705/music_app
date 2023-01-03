@@ -11,7 +11,7 @@ Simple App to put in action the design create by Tetiana.
 
 ## Demo
 
-<img src=".video/demo.gif" height="250"/>
+<img src=".video/demo.gif" height="450"/>
 
 ## Tech and patterns used
 
